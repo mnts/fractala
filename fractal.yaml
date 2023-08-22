@@ -1,0 +1,63 @@
+about: `
+  upgradable JSON-ready object easy to understand by humans 
+  software can update itself according to this middle format
+  should be easy to edit by everybody, including AI and AB
+  `
+libraries:
+  data8: `
+    represents structure that can be inherited by all 8 apps
+    works on server and UI
+  `
+  srv8: 'Helps to distribute data for UIs8'
+dictionary:
+  mixin: 'Part of the thing for specific type'
+db:
+  model:
+    universal:
+      about: 'Properties implemented by all tables'
+      columns:
+        i: 
+          type: nt
+          about: sequence number in current table
+        id: int
+        time: 
+          type: int
+          about: timestamp when it was created
+        updated: int
+        synched:
+          type: int
+          about: time when it was synched to motherbase
+        owner: id
+        ref:
+          about: id of the thing mixin reffers
+    tables:
+      things:
+        about: 'Main table'
+        columns:
+          type: string
+          uri: string
+        signature:
+          about: 'sha256 of immutable properties per thing'
+      events:
+        about: 'whats posted on ab'
+        columnns:
+          content: string
+      accounts:
+        columns:
+          name:
+          private_key:
+          public_key:
+      files:
+        columns:
+          size: 'how many bytes'
+          mime:
+            examples:
+              - image/gif
+              - audio/mp3
+          hash: 'sha 256 hash'
+      positions:
+        about: if the thing should be placed on 2D area
+        columns:
+          x: int
+          y: int
+          z: 'the higher number the more it overalps'
